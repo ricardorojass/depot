@@ -5,17 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @embed_url = soundcloud_api
-    render html: @embed_url.html_safe
-    puts "==== index #{@embed_url}"
-  end
-
-  def soundcloud_api
-    client = Soundcloud.new(:client_id => 'c0eb2e68d69134cf2145de6defa00c4f')
-    puts "===== #{client.to_json}"
-    track_url = 'https://soundcloud.com/forss/in-paradisum'
-    embed_info = client.get('/oembed', :url => track_url)
-    puts embed_info['html']
   end
 
   # GET /products/1
